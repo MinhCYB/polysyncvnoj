@@ -112,7 +112,8 @@ def _get_credentials() -> tuple[str, str]:
 
 def _sync_one(problem: dict, api_key: str, api_secret: str,
                problems_dir: str, site_container: str,
-               allow_zero_points: bool) -> None:
+               allow_zero_points: bool,
+               wineprefix: str = None) -> None:
     """Run the full pipeline for a single problem entry from the config.
 
     Raises on any failure so the caller can catch and report.
@@ -140,6 +141,7 @@ def _sync_one(problem: dict, api_key: str, api_secret: str,
             points_total=problem['points'],
             partial=problem['partial'],
             allow_zero_points=allow_zero_points,
+            wineprefix=wineprefix,
         )
 
         payload = {
@@ -226,6 +228,7 @@ def cmd_sync(args) -> int:
                 problem, api_key, api_secret,
                 args.problems_dir, args.site_container,
                 allow_zero_points=args.allow_zero_points,
+                wineprefix=args.wine_prefix,
             )
             time.sleep(1)
 
@@ -358,6 +361,17 @@ def build_parser() -> argparse.ArgumentParser:
                         help=f'Tên container site (mặc định: {_DEFAULT_SITE_CONTAINER})')
     p_sync.add_argument('--allow-zero-points', action='store_true',
                         help='Cho phép import bài không có points trên Polygon (tự chia đều).')
+    _default_wineprefix = os.path.expanduser('~/tools/polysyncvnoj/.wineprefix')
+    p_sync.add_argument(
+        '--wine-prefix',
+        default=_default_wineprefix,
+        metavar='PATH',
+        help=(
+            f'Đường dẫn đến Wine prefix (WINEPREFIX) dùng khi chạy doall.sh '
+            f'để regenerate test cho package loại standard. '
+            f'Mặc định: {_default_wineprefix}'
+        ),
+    )
 
     # --- status ---
     sub.add_parser('status', help='Hiển thị trạng thái sync của từng bài.')

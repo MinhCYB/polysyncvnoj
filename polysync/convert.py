@@ -329,25 +329,131 @@ def run_solution_for_answer(binary_path, input_path, answer_path,
 # Full package conversion
 # ---------------------------------------------------------------------------
 
+def _tests_complete(pkg_dir, test_count):
+    """Return True if all test inputs AND answer files exist in pkg_dir/tests/."""
+    tests_dir = os.path.join(pkg_dir, 'tests')
+    for i in range(1, test_count + 1):
+        idx = f"{i:02d}"
+        if not os.path.exists(os.path.join(tests_dir, idx)):
+            return False
+        if not os.path.exists(os.path.join(tests_dir, f"{idx}.a")):
+            return False
+    return True
+
+
 def convert_package(pkg_dir, problem_dir, points_total=100,
-                    partial=False, allow_zero_points=False):
+                    partial=False, allow_zero_points=False,
+                    wineprefix=None):
     """Convert a Polygon package directory into a VNOJ problem directory.
 
     Copies test inputs/answers, checker, testlib.h and writes init.yml.
     Returns the parsed info dict from parse_problem_xml.
+
+    For Polygon 'standard' packages (no pre-generated test data), pass
+    ``wineprefix`` pointing to an initialised Wine prefix.  If any test
+    input or answer file is missing AND doall.sh is present in pkg_dir,
+    this function will run ``bash doall.sh`` via Wine to regenerate the
+    full test suite before proceeding.
+
+    Args:
+        pkg_dir:          Path to the extracted Polygon package directory.
+        problem_dir:      Destination VNOJ problem directory (created if absent).
+        points_total:     Total point budget to scale Polygon points into.
+        partial:          Unused flag (passed through to init.yml metadata).
+        allow_zero_points: If True, distribute points evenly when Polygon has none.
+        wineprefix:       Path to WINEPREFIX for Wine-based test regeneration.
+                          Required when the package is 'standard' type.
     """
     info = parse_problem_xml(pkg_dir, allow_zero_points=allow_zero_points)
     os.makedirs(problem_dir, exist_ok=True)
 
-    # Compile model solution if present (needed for missing .a files)
+    # ------------------------------------------------------------------
+    # Step 1: Wine-based test regeneration for standard packages
+    #
+    # A 'standard' package contains doall.sh but no pre-generated test
+    # data (inputs for 'generated' tests and .a answer files for all tests
+    # are absent).  We detect this by checking whether the full test suite
+    # exists before doing anything else.  If tests are missing:
+    #   - If doall.sh is present → run it via Wine to regenerate.
+    #   - If doall.sh is absent  → raise an informative error.
+    # We re-check after regeneration and raise with the last 2000 chars of
+    # the doall log if files are still missing.
+    # ------------------------------------------------------------------
+    doall_sh = os.path.join(pkg_dir, 'doall.sh')
+    if not _tests_complete(pkg_dir, info['test_count']):
+        if os.path.exists(doall_sh):
+            if not wineprefix:
+                raise RuntimeError(
+                    f"Package thiếu test data và có doall.sh, nhưng wineprefix "
+                    "chưa được cung cấp. Truyền --wine-prefix (CLI) hoặc tham số "
+                    "wineprefix= (API) trỏ đến một Wine prefix đã khởi tạo."
+                )
+            from polysync.wine_regen import regenerate_tests_via_doall
+            log.info(
+                "[convert] Package thiếu test data — chạy doall.sh qua Wine "
+                "(wineprefix=%s)...", wineprefix,
+            )
+            returncode, doall_log = regenerate_tests_via_doall(
+                pkg_dir, wineprefix=wineprefix
+            )
+            log.info(
+                "[convert] doall.sh hoàn thành (returncode=%d). "
+                "Log (2000 ký tự cuối):\n%s",
+                returncode, doall_log[-2000:],
+            )
+            # Re-check: even if returncode != 0 some generators succeed
+            # partially; we verify by file presence rather than trusting rc.
+            if not _tests_complete(pkg_dir, info['test_count']):
+                raise RuntimeError(
+                    f"doall.sh chạy xong (rc={returncode}) nhưng vẫn thiếu test "
+                    f"data trong {pkg_dir}/tests/ . "
+                    f"2000 ký tự cuối của log doall:\n{doall_log[-2000:]}"
+                )
+        else:
+            # No doall.sh — not a standard package; we can't recover.
+            missing_in = [
+                f"{i:02d}" for i in range(1, info['test_count'] + 1)
+                if not os.path.exists(os.path.join(pkg_dir, 'tests', f"{i:02d}"))
+            ]
+            missing_ans = [
+                f"{i:02d}.a" for i in range(1, info['test_count'] + 1)
+                if not os.path.exists(
+                    os.path.join(pkg_dir, 'tests', f"{i:02d}.a")
+                )
+            ]
+            raise RuntimeError(
+                f"Package thiếu test data và không có doall.sh để regenerate. "
+                f"Test inputs thiếu: {missing_in or 'none'}. "
+                f"Answer files thiếu: {missing_ans or 'none'}."
+            )
+    else:
+        log.info("[convert] Tất cả test data đã đủ, bỏ qua bước wine regen.")
+
+    # ------------------------------------------------------------------
+    # Step 2: Compile model solution (fallback for still-missing .a files)
+    #
+    # This is ONLY needed when some .a files are absent even after the wine
+    # regen step (e.g. linux/windows packages where a few generated tests
+    # were not pre-built).  When all .a files already exist (common after a
+    # successful doall.sh run) we skip compilation entirely — this avoids
+    # spurious errors on Windows-specific compiler types like
+    # 'cpp.gcc14-64-msys2-g++23' that cannot be compiled with native g++
+    # but are not needed since wine already produced all answers.
+    # ------------------------------------------------------------------
+    tests_dir = os.path.join(pkg_dir, 'tests')
+    missing_answers = [
+        i for i in range(1, info['test_count'] + 1)
+        if not os.path.exists(os.path.join(tests_dir, f"{i:02d}.a"))
+    ]
+
     solution_binary = None
-    if info['main_solution']:
+    if missing_answers and info['main_solution']:
         sol_src = os.path.join(pkg_dir, info['main_solution'])
         if os.path.exists(sol_src):
             solution_binary = os.path.join(problem_dir, '.model_solution_bin')
             log.info(
-                "[convert] Compiling model solution: %s (type=%s)",
-                info['main_solution'], info['main_solution_type'],
+                "[convert] %d test(s) still missing .a — compiling model solution: %s (type=%s)",
+                len(missing_answers), info['main_solution'], info['main_solution_type'],
             )
             compile_cpp(sol_src, solution_binary,
                         solution_type=info['main_solution_type'])
@@ -360,12 +466,16 @@ def convert_package(pkg_dir, problem_dir, points_total=100,
     raw_total = sum(info['points_list'])   # guaranteed > 0 at this point
     scale = points_total / raw_total
 
+    # ------------------------------------------------------------------
+    # Step 3: Copy tests, normalising CRLF → LF
+    # ------------------------------------------------------------------
     test_cases = []
     for i in range(1, info['test_count'] + 1):
         idx    = f"{i:02d}"
         in_src = os.path.join(pkg_dir, 'tests', idx)
         in_dst = os.path.join(problem_dir, f"{i}.in")
         out_dst = os.path.join(problem_dir, f"{i}.out")
+        # Normalise CRLF → LF: standard/Windows packages may have \r\n
         _copy_normalised(in_src, in_dst)
 
         ans_src = os.path.join(pkg_dir, 'tests', f"{idx}.a")

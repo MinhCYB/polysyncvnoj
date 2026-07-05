@@ -27,6 +27,38 @@ cp sync_config.example.yml sync_config.yml
 
 ---
 
+## Cài đặt Wine (cần cho package loại `standard`)
+
+Polygon có 3 loại package: **linux**, **windows**, và **standard**.
+Đa số bài chỉ có sẵn package `standard` — loại này **không kèm test data đã
+sinh sẵn** cho các test `method='generated'` và cũng không có file `.a` trả lời.
+Thay vào đó, package chứa `doall.sh` — khi chạy sẽ dùng generator/solution/checker
+(đóng gói dạng `.exe`) qua Wine để sinh đủ input + answer cho mọi test.
+
+### Cài Wine (chạy 1 lần trên server)
+
+```bash
+sudo dpkg --add-architecture i386
+sudo apt install -y wine32 wine64 wine
+```
+
+### Khởi tạo Wine prefix (chạy 1 lần)
+
+```bash
+export WINEPREFIX=~/tools/polysyncvnoj/.wineprefix
+export WINEDEBUG=-all
+wineboot --init
+```
+
+Sau bước này, thư mục `.wineprefix/` sẽ được tạo trong thư mục project.
+Đây là giá trị mặc định cho `--wine-prefix` khi chạy `cli.py sync`.
+
+> **Lưu ý**: package `linux` hoặc `windows` (nếu có) được ưu tiên hơn
+> `standard` — chúng đã có sẵn test data, không cần Wine và xử lý nhanh hơn.
+> Tool tự động chọn package tốt nhất có sẵn.
+
+---
+
 ## Sử dụng
 
 ```bash
@@ -55,6 +87,7 @@ python cli.py list-remote
 | `--problems-dir DIR` | `~/vnoj-docker/dmoj/problems` | Thư mục problems/ của vnoj-docker |
 | `--site-container NAME` | `vnoj_site` | Tên Docker container của site |
 | `--allow-zero-points` | off | Cho phép import bài không set points trên Polygon (tự chia đều) |
+| `--wine-prefix PATH` | `~/tools/polysyncvnoj/.wineprefix` | WINEPREFIX dùng để chạy doall.sh khi package là `standard` |
 
 ---
 
