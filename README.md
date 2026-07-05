@@ -63,19 +63,28 @@ Sau bước này, thư mục `.wineprefix/` sẽ được tạo trong thư mục
 
 ```bash
 # Sync tất cả bài trong config (skip bài không đổi)
-python cli.py sync
+python3 cli.py sync
 
 # Ép sync lại toàn bộ, bỏ qua check state
-python cli.py sync --force
+python3 cli.py sync --force
 
 # Chỉ sync 1 bài theo code (bỏ qua check state)
-python cli.py sync --only hhy_jam
+python3 cli.py sync --only hhy_jam
 
 # Xem trạng thái sync của từng bài
-python cli.py status
+python3 cli.py status
 
 # Liệt kê bài có trên Polygon (tham khảo, không dùng để tự động sync)
-python cli.py list-remote
+python3 cli.py list-remote
+
+# Tự động sinh config từ danh sách bài trên Polygon (xem trước)
+python3 cli.py generate-config
+
+# Chỉ lấy bài của mình (filter client-side theo owner)
+python3 cli.py generate-config --owner ms24
+
+# Ghi thẳng vào sync_config.yml sau khi đã xem trước
+python3 cli.py generate-config --owner ms24 --write
 ```
 
 ### Options cho `sync`
@@ -88,6 +97,47 @@ python cli.py list-remote
 | `--site-container NAME` | `vnoj_site` | Tên Docker container của site |
 | `--allow-zero-points` | off | Cho phép import bài không set points trên Polygon (tự chia đều) |
 | `--wine-prefix PATH` | `~/tools/polysyncvnoj/.wineprefix` | WINEPREFIX dùng để chạy doall.sh khi package là `standard` |
+
+---
+
+## `generate-config` — tự động sinh config từ Polygon
+
+`generate-config` đọc toàn bộ `problems.list` từ Polygon, bỏ qua bài đã
+có trong `sync_config.yml`, và sinh entry mới cho các bài còn lại.
+
+**Luồng làm việc khuyến nghị:**
+
+```bash
+# Bước 1: Xem trước bài sẽ được thêm (không ghi file)
+python3 cli.py generate-config --owner ms24
+
+# Bước 2: Sau khi review, ghi vào config
+python3 cli.py generate-config --owner ms24 --write
+
+# Bước 3: Mở sync_config.yml, điền points/group cho từng bài mới
+# (bài được thêm chỉ có polygon_id + code, dùng defaults cho phần còn lại)
+
+# Bước 4: Chạy sync thử 1 bài trước
+python3 cli.py sync --only ten_bai_moi
+```
+
+> **Lưu ý quan trọng**: `generate-config` chỉ là điểm **khởi đầu** —
+> vẫn cần review qua 1 lượt trước khi sync hàng loạt lần đầu.
+> Đặc biệt cần kiểm tra `group` và `type` cho từng bài, vì đây không có
+> safety net như `points` (bài chưa set points sẽ raise lỗi khi sync).
+
+### Options cho `generate-config`
+
+| Option | Mặc định | Mô tả |
+|---|---|---|
+| `--write` | off | Ghi vào `sync_config.yml` (mặc định chỉ preview) |
+| `--owner USERNAME` | — | Lọc theo owner (client-side — Polygon không hỗ trợ filter phía server) |
+
+**Về `--owner`**: Polygon API (`problems.list`) không hỗ trợ filter theo
+owner ở phía server — đã verify thực tế, tham số `owner` truyền lên bị
+bỏ qua và trả về toàn bộ danh sách. Tool lọc client-side sau khi tải xong.
+Account có quyền xem bài team/shared sẽ thấy bài của nhiều owner khác nhau
+— dùng `--owner <username>` để giới hạn chỉ lấy bài của mình.
 
 ---
 
