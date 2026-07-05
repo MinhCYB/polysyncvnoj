@@ -1,0 +1,31 @@
+# sync_config.example.yml — bản mẫu có comment đầy đủ, an toàn để commit git
+#
+# Copy file này thành sync_config.yml và điền thông tin bài thật.
+# sync_config.yml bị .gitignore chặn (chứa polygon_id nội bộ).
+
+defaults:
+  # Tên ProblemGroup mặc định trên VNOJ (phải đã tồn tại trong DB)
+  group: "Uncategorized"
+  # Tên ProblemType mặc định trên VNOJ (phải đã tồn tại trong DB)
+  type: "uncategorized"
+  # Danh sách ngôn ngữ cho phép (key VNOJ, xem /admin/judge/language/)
+  languages: [CPP17, CPP20, PY3, PYPY3, JAVA]
+  # Cho phép chấm điểm từng phần (partial credit)?
+  partial: false
+  # Publish bài ngay sau khi import? (false = tạo private)
+  public: false
+
+problems:
+  - polygon_id: 123456        # ID số trên Polygon (xem URL khi vào problem)
+    code: hhy_jam             # Code bài trên VNOJ — BẮT BUỘC, khớp ^[a-z0-9_]+$
+    points: 100               # Điểm tối đa trên VNOJ
+    partial: true             # Override default partial
+    group: "HHY Contest 2026" # Override default group
+
+  - polygon_id: 234567
+    code: another_one         # Các trường còn lại lấy từ defaults
+
+  - polygon_id: 345678
+    code: locked_problem
+    locked: true              # Bỏ qua bài này khi sync
+                              # (dùng khi bài đang có người thi trên VNOJ)

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<problem>
+  <names>
+    <name language="english" value="Sample Problem"/>
+    <name language="russian" value="Образец задачи"/>
+  </names>
+
+  <judging input-file="" output-file="">
+    <!-- pretests testset — should be ignored in favour of "tests" -->
+    <testset name="pretests">
+      <time-limit>2000</time-limit>
+      <memory-limit>262144</memory-limit>
+      <test-count>2</test-count>
+      <tests>
+        <test points="0"/>
+        <test points="0"/>
+      </tests>
+    </testset>
+
+    <!-- main testset — must be preferred -->
+    <testset name="tests">
+      <time-limit>2000</time-limit>
+      <memory-limit>262144</memory-limit>
+      <test-count>3</test-count>
+      <tests>
+        <test points="30"/>
+        <test points="30"/>
+        <test points="40"/>
+      </tests>
+    </testset>
+  </judging>
+
+  <assets>
+    <checker name="checker">
+      <source path="check.cpp" type="cpp.g++17"/>
+    </checker>
+
+    <solutions>
+      <!-- MA tag = main solution -->
+      <solution tag="MA">
+        <source path="solutions/std.cpp" type="cpp.g++17"/>
+      </solution>
+      <solution tag="WA">
+        <source path="solutions/wrong.cpp" type="cpp.g++17"/>
+      </solution>
+    </solutions>
+  </assets>
+</problem>

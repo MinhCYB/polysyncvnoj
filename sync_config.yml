@@ -1,0 +1,23 @@
+# sync_config.yml — cấu hình đồng bộ Polygon → VNOJ
+#
+# Các giá trị trong `defaults` được áp dụng cho mọi bài nếu bài đó
+# không tự override trường đó.
+
+defaults:
+  group: "Uncategorized"
+  type: "uncategorized"
+  languages: [CPP17, CPP20, PY3, PYPY3, JAVA]
+  partial: false
+  public: false
+
+problems:
+  # Ví dụ — thay bằng bài thật của bạn:
+  # - polygon_id: 123456
+  #   code: hhy_jam          # phải khớp ^[a-z0-9_]+$
+  #   points: 100
+  #   partial: true
+  #   group: "HHY Contest 2026"
+  #
+  # - polygon_id: 234567
+  #   code: another_one      # phần còn lại dùng defaults ở trên
+  #   locked: true           # bỏ qua bài này khi sync (đang có người thi)
