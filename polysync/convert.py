@@ -29,6 +29,28 @@ import xml.etree.ElementTree as ET
 
 log = logging.getLogger(__name__)
 
+
+# ---------------------------------------------------------------------------
+# Internal helpers
+# ---------------------------------------------------------------------------
+
+def _copy_normalised(src, dst):
+    """Copy a test file src → dst, normalising CRLF → LF.
+
+    Polygon packages built for Windows (or 'standard') may contain CRLF line
+    endings in .in/.a files.  When a Linux checker or standard-diff compares
+    contestant output (LF) against such a file the trailing '\\r' looks like
+    extra content and causes false Wrong-Answer verdicts.  Stripping CRLFs here
+    ensures byte-for-byte consistency regardless of which package type was
+    downloaded.
+    """
+    with open(src, 'rb') as f:
+        data = f.read()
+    data = data.replace(b'\r\n', b'\n')
+    with open(dst, 'wb') as f:
+        f.write(data)
+
+
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
@@ -344,11 +366,11 @@ def convert_package(pkg_dir, problem_dir, points_total=100,
         in_src = os.path.join(pkg_dir, 'tests', idx)
         in_dst = os.path.join(problem_dir, f"{i}.in")
         out_dst = os.path.join(problem_dir, f"{i}.out")
-        shutil.copy(in_src, in_dst)
+        _copy_normalised(in_src, in_dst)
 
         ans_src = os.path.join(pkg_dir, 'tests', f"{idx}.a")
         if os.path.exists(ans_src):
-            shutil.copy(ans_src, out_dst)
+            _copy_normalised(ans_src, out_dst)
         else:
             if not solution_binary:
                 raise RuntimeError(

@@ -10,7 +10,7 @@ defaults:
   partial: false
   public: false
 
-problems:
+# problems:
   # Ví dụ — thay bằng bài thật của bạn:
   # - polygon_id: 123456
   #   code: hhy_jam          # phải khớp ^[a-z0-9_]+$
@@ -21,3 +21,10 @@ problems:
   # - polygon_id: 234567
   #   code: another_one      # phần còn lại dùng defaults ở trên
   #   locked: true           # bỏ qua bài này khi sync (đang có người thi)
+
+problems:
+  - polygon_id: 554362
+    code: test_ifelse_01
+    points: 100
+    partial: false
+    group: "Test Import"

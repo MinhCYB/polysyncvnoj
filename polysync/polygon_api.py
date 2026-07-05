@@ -4,7 +4,7 @@ polysync/polygon_api.py — Polygon API client.
 Exports:
     polygon_sign            HMAC-style request signing
     polygon_call            Low-level signed POST helper
-    fetch_latest_package_meta   Lightweight: returns {package_id, revision} without downloading
+    fetch_latest_package_meta   Lightweight: returns {package_id, revision, type} without downloading
     download_polygon_package    Full: downloads and extracts the zip to dest_dir
     fetch_statement         Fetches problem.statements JSON
 """
@@ -51,7 +51,13 @@ def polygon_call(method_name, params, api_key, api_secret, raw=False):
 
 def fetch_latest_package_meta(problem_id, api_key, api_secret):
     """Cheap check: call problem.packages, return the latest READY package's
-    metadata as {'package_id': int, 'revision': int}.
+    metadata as {'package_id': int, 'revision': int, 'type': str}.
+
+    Selects the highest-revision READY package regardless of type (linux /
+    windows / standard).  The package content relevant to this pipeline
+    (problem.xml, tests/*, checker/solution sources) is identical across all
+    types; only precompiled binaries and invoke scripts differ, and those are
+    not used here.
 
     Does NOT download the zip — intended to be called frequently for change
     detection without incurring download costs.
@@ -68,11 +74,20 @@ def fetch_latest_package_meta(problem_id, api_key, api_secret):
             "Build a package on Polygon first (Package tab → Create package)."
         )
     latest = max(ready, key=lambda p: p['revision'])
-    return {'package_id': latest['id'], 'revision': latest['revision']}
+    return {
+        'package_id': latest['id'],
+        'revision': latest['revision'],
+        'type': latest['type'],
+    }
 
 
 def download_polygon_package(problem_id, api_key, api_secret, dest_dir):
-    """Download and extract the latest READY linux package to dest_dir/extracted/.
+    """Download and extract the latest READY package to dest_dir/extracted/.
+
+    The package type (linux / windows / standard) is taken directly from the
+    metadata returned by fetch_latest_package_meta — it is never hardcoded.
+    This avoids HTTP 500 errors on problems whose highest-revision package
+    happens to be a non-linux build.
 
     Reuses fetch_latest_package_meta to get package_id so the listing logic
     is not duplicated.
@@ -85,12 +100,14 @@ def download_polygon_package(problem_id, api_key, api_secret, dest_dir):
     log.info("[polygon] Fetching package list for problem %s...", problem_id)
     meta = fetch_latest_package_meta(problem_id, api_key, api_secret)
     package_id = meta['package_id']
-    log.info("[polygon] Downloading package #%d (revision %d)...",
-             package_id, meta['revision'])
+    log.info(
+        "[polygon] Downloading package #%d (revision %d, type=%s)...",
+        package_id, meta['revision'], meta['type'],
+    )
 
     zip_bytes = polygon_call(
         'problem.package',
-        {'problemId': problem_id, 'packageId': package_id, 'type': 'linux'},
+        {'problemId': problem_id, 'packageId': package_id, 'type': meta['type']},
         api_key, api_secret, raw=True,
     )
     # problem.package returns raw zip bytes on success, but on error it returns
