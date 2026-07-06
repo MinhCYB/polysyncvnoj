@@ -25,11 +25,43 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from polysync.convert import (
     MAIN_SOLUTION_TAGS,
+    latex_to_markdown,
     parse_problem_xml,
     write_init_yml,
 )
 
 FIXTURE_DIR = Path(__file__).parent / 'fixtures' / 'sample_problem_xml'
+
+
+# ---------------------------------------------------------------------------
+# latex_to_markdown
+# ---------------------------------------------------------------------------
+
+class TestLatexToMarkdown(unittest.TestCase):
+    def test_inline_math_dollar_to_tilde(self):
+        """Polygon dùng $...$ — phải convert sang ~...~ cho Martor/VNOJ."""
+        self.assertEqual(
+            latex_to_markdown("Tìm $N$ và $M$."),
+            "Tìm ~N~ và ~M~.",
+        )
+
+    def test_empty_input(self):
+        self.assertEqual(latex_to_markdown(''), '')
+
+    def test_textbf(self):
+        self.assertEqual(latex_to_markdown(r'\textbf{in đậm}'), '**in đậm**')
+
+    def test_textit(self):
+        self.assertEqual(latex_to_markdown(r'\textit{nghiêng}'), '*nghiêng*')
+
+    def test_no_dollar_unchanged(self):
+        """Text không có công thức phải giữ nguyên."""
+        self.assertEqual(
+            latex_to_markdown("Không có công thức ở đây."),
+            "Không có công thức ở đây.",
+        )
+
+
 
 
 # ---------------------------------------------------------------------------

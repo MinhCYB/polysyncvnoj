@@ -117,6 +117,13 @@ def latex_to_markdown(text):
         text,
     )
 
+    # Polygon dùng $...$ (LaTeX chuẩn) cho công thức, Martor/VNOJ dùng
+    # ~...~ — convert sang đúng delimiter, nếu không công thức hiện thô
+    # trên site thay vì render.
+    text = re.sub(r'\$([^$]+)\$', r'~\1~', text)
+    # TODO: xử lý $$...$$ (display math) — chưa rõ Martor dùng ký hiệu
+    # gì cho display math, cần xác nhận thực tế trước khi implement.
+
     # \\ line breaks → markdown line break
     text = text.replace('\\\\', '  \n')
 

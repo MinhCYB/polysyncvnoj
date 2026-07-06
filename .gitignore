@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 .venv/
 .wineprefix
+sync_config.yml
