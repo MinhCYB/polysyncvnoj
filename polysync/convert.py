@@ -9,8 +9,16 @@ Handles:
   - init.yml writer                           (write_init_yml)
 
 IMPORTANT — preserved bug-fix invariants (do NOT change these):
-  1. init.yml checker is written FLAT (checker: bridged / checker_args: …),
-     NOT nested.  DMOJ/VNOJ will not parse the nested form.
+  1. init.yml checker is written NESTED under a single 'checker' key:
+         checker:
+           name: bridged
+           args:
+             files: checker.cpp
+             lang: CPP17
+             type: testlib
+     The flat form (checker: bridged / checker_args: …) causes
+     "TypeError: check() missing 1 required positional argument: 'files'"
+     on DMOJ/VNOJ.
   2. sum(points_list) == 0  →  raise RuntimeError unless allow_zero_points.
   3. Main solution tag: accept {'MA', 'main', 'Main'} (Polygon uses 'MA'
      internally; 'main'/'Main' appears in some export versions).
@@ -524,13 +532,16 @@ def convert_package(pkg_dir, problem_dir, points_total=100,
 def write_init_yml(problem_dir, info, test_cases, checker_dst_name):
     """Write init.yml for a VNOJ problem directory.
 
-    Invariant 1: checker is written FLAT:
-        checker: bridged
-        checker_args:
-          files: checker.cpp
-          lang: CPP17
-          type: testlib
-    NOT nested under a single 'checker' key.
+    Invariant 1: checker is written NESTED under a single 'checker' key:
+        checker:
+          name: bridged
+          args:
+            files: checker.cpp
+            lang: CPP17
+            type: testlib
+    The flat form (checker: bridged / checker_args: …) causes
+    "TypeError: check() missing 1 required positional argument: 'files'"
+    on DMOJ/VNOJ — confirmed against real VNOJ-generated init.yml.
     """
     lines = [
         f"time_limit: {info['time_limit']}",
@@ -544,11 +555,12 @@ def write_init_yml(problem_dir, info, test_cases, checker_dst_name):
         ]
     if checker_dst_name:
         lines += [
-            'checker: bridged',
-            'checker_args:',
-            f'  files: {checker_dst_name}',
-            f"  lang: {info['checker_lang']}",
-            '  type: testlib',
+            'checker:',
+            '  name: bridged',
+            '  args:',
+            f'    files: {checker_dst_name}',
+            f"    lang: {info['checker_lang']}",
+            '    type: testlib',
         ]
     lines.append('test_cases:')
     for tc in test_cases:

@@ -274,7 +274,7 @@ class TestMintreeIntegration(unittest.TestCase):
             with open(init_yml) as f:
                 content = f.read()
             self.assertIn('test_cases:', content)
-            self.assertIn('checker: bridged', content)   # Invariant 1
+            self.assertIn('  name: bridged', content)    # Invariant 1: nested checker format
 
     def test_wine_regen_called_when_answers_missing(self):
         """When .a files are absent (even if inputs present), doall.sh IS called."""

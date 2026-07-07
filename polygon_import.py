@@ -429,15 +429,18 @@ def write_init_yml(problem_dir, info, test_cases, checker_dst_name):
     if info['file_io']:
         lines += ["file_io:", f"  input: {info['input_file']}", f"  output: {info['output_file']}"]
     if checker_dst_name:
-        # DMOJ/VNOJ expects `checker` as a flat string (the checker's name),
-        # with sibling top-level key `checker_args` for its parameters — NOT
-        # a nested {name, args} mapping under `checker`.
+        # DMOJ/VNOJ expects `checker` as a nested mapping with `name` and `args`
+        # sub-keys — NOT a flat string with a sibling `checker_args` key.
+        # The flat form causes "TypeError: check() missing 1 required positional
+        # argument: 'files'" on the judge.  Confirmed against real VNOJ-generated
+        # init.yml (uploaded via web UI).
         lines += [
-            "checker: bridged",
-            "checker_args:",
-            f"  files: {checker_dst_name}",
-            f"  lang: {info['checker_lang']}",
-            "  type: testlib",
+            "checker:",
+            "  name: bridged",
+            "  args:",
+            f"    files: {checker_dst_name}",
+            f"    lang: {info['checker_lang']}",
+            "    type: testlib",
         ]
     lines.append("test_cases:")
     for tc in test_cases:
