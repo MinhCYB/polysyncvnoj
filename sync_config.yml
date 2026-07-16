@@ -23,7 +23,918 @@ defaults:
   #   locked: true           # bỏ qua bài này khi sync (đang có người thi)
 
 problems: 
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-06, owner: dang)
   - polygon_id: 554586
-    code: lv1_nhapxuat_06     
+    code: lv1_nhapxuat_06
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-15, owner: dang)
+  - polygon_id: 556501
+    code: lv1_nhapxuat_15
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-14, owner: dang)
+  - polygon_id: 556477
+    code: lv1_nhapxuat_14
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-13, owner: dang)
+  - polygon_id: 556426
+    code: lv1_nhapxuat_13
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-08, owner: dang)
+  - polygon_id: 556219
+    code: lv1_nhapxuat_08
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-12, owner: dang)
+  - polygon_id: 556406
+    code: lv1_nhapxuat_12
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-11, owner: dang)
+  - polygon_id: 556397
+    code: lv1_nhapxuat_11
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-10, owner: dang)
+  - polygon_id: 556362
+    code: lv1_nhapxuat_10
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-09, owner: dang)
+  - polygon_id: 556259
+    code: lv1_nhapxuat_09
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-04, owner: dang)
+  - polygon_id: 553021
+    code: lv1_vonglap_04
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-07, owner: dang)
+  - polygon_id: 554589
+    code: lv1_nhapxuat_07
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-05, owner: dang)
+  - polygon_id: 554541
+    code: lv1_nhapxuat_05
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-ifelse-01, owner: dang)
+  - polygon_id: 554362
+    code: lv1_ifelse_01
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-04, owner: dang)
+  - polygon_id: 554315
+    code: lv1_nhapxuat_04
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-03, owner: dang)
+  - polygon_id: 554303
+    code: lv1_nhapxuat_03
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-02, owner: dang)
+  - polygon_id: 554283
+    code: lv1_nhapxuat_02
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-nhapxuat-01, owner: dang)
+  - polygon_id: 554276
+    code: lv1_nhapxuat_01
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-16, owner: dang)
+  - polygon_id: 553616
+    code: lv1_vonglap_16
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-15, owner: dang)
+  - polygon_id: 553613
+    code: lv1_vonglap_15
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-14, owner: dang)
+  - polygon_id: 553445
+    code: lv1_vonglap_14
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-11, owner: dang)
+  - polygon_id: 553206
+    code: lv1_vonglap_11
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-13, owner: dang)
+  - polygon_id: 553220
+    code: lv1_vonglap_13
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-12, owner: dang)
+  - polygon_id: 553209
+    code: lv1_vonglap_12
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-10, owner: dang)
+  - polygon_id: 553205
+    code: lv1_vonglap_10
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-09, owner: dang)
+  - polygon_id: 553100
+    code: lv1_vonglap_09
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-08, owner: dang)
+  - polygon_id: 553072
+    code: lv1_vonglap_08
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-07, owner: dang)
+  - polygon_id: 553068
+    code: lv1_vonglap_07
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-06, owner: dang)
+  - polygon_id: 553063
+    code: lv1_vonglap_06
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-05, owner: dang)
+  - polygon_id: 553031
+    code: lv1_vonglap_05
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-03, owner: dang)
+  - polygon_id: 553001
+    code: lv1_vonglap_03
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-02, owner: dang)
+  - polygon_id: 552983
+    code: lv1_vonglap_02
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-vonglap-01, owner: dang)
+  - polygon_id: 552948
+    code: lv1_vonglap_01
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-11, owner: ms24)
+  - polygon_id: 554911
+    code: lv1_base_11
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-10, owner: ms24)
+  - polygon_id: 554905
+    code: lv1_base_10
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-01, owner: ms24)
+  - polygon_id: 554195
+    code: lv1_base_01
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-02, owner: ms24)
+  - polygon_id: 554196
+    code: lv1_base_02
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-03, owner: ms24)
+  - polygon_id: 554515
+    code: lv1_base_03
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-04, owner: ms24)
+  - polygon_id: 554516
+    code: lv1_base_04
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-05, owner: ms24)
+  - polygon_id: 554815
+    code: lv1_base_05
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-06, owner: ms24)
+  - polygon_id: 554816
+    code: lv1_base_06
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-07, owner: ms24)
+  - polygon_id: 554835
+    code: lv1_base_07
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-08, owner: ms24)
+  - polygon_id: 554836
+    code: lv1_base_08
+  # added by generate-config on 2026-07-07 (Polygon name: lv1-base-09, owner: ms24)
+  - polygon_id: 554837
+    code: lv1_base_09
+  # added by generate-config on 2026-07-07 (Polygon name: chon10-cau4, owner: legend0fhell)
+  - polygon_id: 545739
+    code: chon10_cau4
+  # added by generate-config on 2026-07-07 (Polygon name: chon10-cau5, owner: legend0fhell)
+  - polygon_id: 545749
+    code: chon10_cau5
+  # added by generate-config on 2026-07-07 (Polygon name: chon10-cau3, owner: legend0fhell)
+  - polygon_id: 545728
+    code: chon10_cau3
+  # added by generate-config on 2026-07-07 (Polygon name: chon10-cau2, owner: legend0fhell)
+  - polygon_id: 545725
+    code: chon10_cau2
+  # added by generate-config on 2026-07-07 (Polygon name: chon10-cau1, owner: legend0fhell)
+  - polygon_id: 545721
+    code: chon10_cau1
+  # added by generate-config on 2026-07-07 (Polygon name: example-interactive-binary-search, owner: mmirzayanov)
+  - polygon_id: 69933
+    code: example_interactive_binary_search
+  # added by generate-config on 2026-07-07 (Polygon name: text, owner: ms24)
+  - polygon_id: 336343
+    code: text
+  # added by generate-config on 2026-07-07 (Polygon name: example-a-plus-b, owner: mmirzayanov)
+  - polygon_id: 69927
+    code: example_a_plus_b
+  # added by generate-config on 2026-07-07 (Polygon name: sweepline-manhattan, owner: linhdieu)
+  - polygon_id: 310060
+    code: sweepline_manhattan
+  # added by generate-config on 2026-07-07 (Polygon name: sweepline-flymode, owner: linhdieu)
+  - polygon_id: 310057
+    code: sweepline_flymode
+  # added by generate-config on 2026-07-07 (Polygon name: sweepline-chiakeo, owner: linhdieu)
+  - polygon_id: 310052
+    code: sweepline_chiakeo
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-rmq, owner: legend0fhell)
+  - polygon_id: 450076
+    code: hhy_rmq
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-ancestor, owner: legend0fhell)
+  - polygon_id: 450077
+    code: hhy_ancestor
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-cluster, owner: linhdieu)
+  - polygon_id: 446983
+    code: hhy_cluster
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-waternet, owner: linhdieu)
+  - polygon_id: 446927
+    code: hhy_waternet
+  # added by generate-config on 2026-07-07 (Polygon name: magicpaths, owner: linhdieu)
+  - polygon_id: 446583
+    code: magicpaths
+  # added by generate-config on 2026-07-07 (Polygon name: sweepline-quadquery, owner: linhdieu)
+  - polygon_id: 310101
+    code: sweepline_quadquery
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-select, owner: ms24)
+  - polygon_id: 372286
+    code: hhy_select
+  # added by generate-config on 2026-07-07 (Polygon name: estprog, owner: legend0fhell)
+  - polygon_id: 442530
+    code: estprog
+  # added by generate-config on 2026-07-07 (Polygon name: motree, owner: legend0fhell)
+  - polygon_id: 442343
+    code: motree
+  # added by generate-config on 2026-07-07 (Polygon name: xornum, owner: legend0fhell)
+  - polygon_id: 442335
+    code: xornum
+  # added by generate-config on 2026-07-07 (Polygon name: powerarr, owner: legend0fhell)
+  - polygon_id: 442322
+    code: powerarr
+  # added by generate-config on 2026-07-07 (Polygon name: countx, owner: legend0fhell)
+  - polygon_id: 442316
+    code: countx
+  # added by generate-config on 2026-07-07 (Polygon name: trigroup, owner: legend0fhell)
+  - polygon_id: 439728
+    code: trigroup
+  # added by generate-config on 2026-07-07 (Polygon name: parking, owner: legend0fhell)
+  - polygon_id: 439725
+    code: parking
+  # added by generate-config on 2026-07-07 (Polygon name: fun-tomau, owner: legend0fhell)
+  - polygon_id: 439719
+    code: fun_tomau
+  # added by generate-config on 2026-07-07 (Polygon name: cutgraph, owner: legend0fhell)
+  - polygon_id: 438233
+    code: cutgraph
+  # added by generate-config on 2026-07-07 (Polygon name: cowjoin, owner: legend0fhell)
+  - polygon_id: 438214
+    code: cowjoin
+  # added by generate-config on 2026-07-07 (Polygon name: votree, owner: ms24)
+  - polygon_id: 355240
+    code: votree
+  # added by generate-config on 2026-07-07 (Polygon name: binhhd-sumk, owner: legend0fhell)
+  - polygon_id: 431768
+    code: binhhd_sumk
+  # added by generate-config on 2026-07-07 (Polygon name: binhhd-flu, owner: legend0fhell)
+  - polygon_id: 431767
+    code: binhhd_flu
+  # added by generate-config on 2026-07-07 (Polygon name: rmq, owner: ms24)
+  - polygon_id: 431082
+    code: rmq
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-fibosum, owner: legend0fhell)
+  - polygon_id: 429726
+    code: hhy_fibosum
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-loco, owner: legend0fhell)
+  - polygon_id: 429722
+    code: hhy_loco
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-tile, owner: legend0fhell)
+  - polygon_id: 429721
+    code: hhy_tile
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-xaycau, owner: legend0fhell)
+  - polygon_id: 421408
+    code: hsg_xaycau
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-pdiem, owner: legend0fhell)
+  - polygon_id: 421390
+    code: hsg_pdiem
+  # added by generate-config on 2026-07-07 (Polygon name: posi, owner: ms24)
+  - polygon_id: 419388
+    code: posi
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-room, owner: legend0fhell)
+  - polygon_id: 418967
+    code: hsg_room
+  # added by generate-config on 2026-07-07 (Polygon name: btab, owner: ms24)
+  - polygon_id: 415594
+    code: btab
+  # added by generate-config on 2026-07-07 (Polygon name: minrange, owner: ms24)
+  - polygon_id: 328733
+    code: minrange
+  # added by generate-config on 2026-07-07 (Polygon name: bin, owner: ms24)
+  - polygon_id: 407998
+    code: bin
+  # added by generate-config on 2026-07-07 (Polygon name: edit, owner: ms24)
+  - polygon_id: 407757
+    code: edit
+  # added by generate-config on 2026-07-07 (Polygon name: primes, owner: ms24)
+  - polygon_id: 407747
+    code: primes
+  # added by generate-config on 2026-07-07 (Polygon name: evenodd, owner: ms24)
+  - polygon_id: 407735
+    code: evenodd
+  # added by generate-config on 2026-07-07 (Polygon name: mxar, owner: ms24)
+  - polygon_id: 407733
+    code: mxar
+  # added by generate-config on 2026-07-07 (Polygon name: tristr, owner: ms24)
+  - polygon_id: 407738
+    code: tristr
+  # added by generate-config on 2026-07-07 (Polygon name: maxab, owner: ms24)
+  - polygon_id: 407732
+    code: maxab
+  # added by generate-config on 2026-07-07 (Polygon name: restsched, owner: legend0fhell)
+  - polygon_id: 415584
+    code: restsched
+  # added by generate-config on 2026-07-07 (Polygon name: buy, owner: ms24)
+  - polygon_id: 415575
+    code: buy
+  # added by generate-config on 2026-07-07 (Polygon name: chgstr, owner: ms24)
+  - polygon_id: 415562
+    code: chgstr
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-oraltest, owner: legend0fhell)
+  - polygon_id: 354710
+    code: hhy_oraltest
+  # added by generate-config on 2026-07-07 (Polygon name: rectgame, owner: legend0fhell)
+  - polygon_id: 414867
+    code: rectgame
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-matgraph, owner: legend0fhell)
+  - polygon_id: 414793
+    code: hsg_matgraph
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-robot, owner: legend0fhell)
+  - polygon_id: 414735
+    code: hsg_robot
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-delgame, owner: legend0fhell)
+  - polygon_id: 414734
+    code: hsg_delgame
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-romat, owner: legend0fhell)
+  - polygon_id: 414712
+    code: hsg_romat
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-equal, owner: legend0fhell)
+  - polygon_id: 414709
+    code: hsg_equal
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-subkprime, owner: legend0fhell)
+  - polygon_id: 414707
+    code: hsg_subkprime
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-laixe, owner: legend0fhell)
+  - polygon_id: 414011
+    code: hsg_laixe
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-chiakeo, owner: legend0fhell)
+  - polygon_id: 414014
+    code: hsg_chiakeo
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-ruby, owner: legend0fhell)
+  - polygon_id: 414009
+    code: hsg_ruby
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-monqua, owner: legend0fhell)
+  - polygon_id: 414006
+    code: hsg_monqua
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-chux, owner: legend0fhell)
+  - polygon_id: 413694
+    code: hsg_chux
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-square, owner: legend0fhell)
+  - polygon_id: 413692
+    code: hsg_square
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-prime, owner: legend0fhell)
+  - polygon_id: 413350
+    code: hsg_prime
+  # added by generate-config on 2026-07-07 (Polygon name: hsg-reward, owner: legend0fhell)
+  - polygon_id: 413367
+    code: hsg_reward
+  # added by generate-config on 2026-07-07 (Polygon name: troll-parscore, owner: legend0fhell)
+  - polygon_id: 410232
+    code: troll_parscore
+  # added by generate-config on 2026-07-07 (Polygon name: sultra, owner: ms24)
+  - polygon_id: 410201
+    code: sultra
+  # added by generate-config on 2026-07-07 (Polygon name: lazypaint, owner: legend0fhell)
+  - polygon_id: 403440
+    code: lazypaint
+  # added by generate-config on 2026-07-07 (Polygon name: passlin, owner: ms24)
+  - polygon_id: 409710
+    code: passlin
+  # added by generate-config on 2026-07-07 (Polygon name: shifting, owner: legend0fhell)
+  - polygon_id: 409853
+    code: shifting
+  # added by generate-config on 2026-07-07 (Polygon name: powd, owner: ms24)
+  - polygon_id: 408464
+    code: powd
+  # added by generate-config on 2026-07-07 (Polygon name: teddy, owner: ms24)
+  - polygon_id: 408457
+    code: teddy
+  # added by generate-config on 2026-07-07 (Polygon name: fibo, owner: ms24)
+  - polygon_id: 408456
+    code: fibo
+  # added by generate-config on 2026-07-07 (Polygon name: ternary, owner: ms24)
+  - polygon_id: 408455
+    code: ternary
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-findstr, owner: ms24)
+  - polygon_id: 354703
+    code: hhy_findstr
+  # added by generate-config on 2026-07-07 (Polygon name: mexlove, owner: legend0fhell)
+  - polygon_id: 403502
+    code: mexlove
+  # added by generate-config on 2026-07-07 (Polygon name: pickleball, owner: legend0fhell)
+  - polygon_id: 403201
+    code: pickleball
+  # added by generate-config on 2026-07-07 (Polygon name: dxung, owner: ms24)
+  - polygon_id: 355254
+    code: dxung
+  # added by generate-config on 2026-07-07 (Polygon name: pearls, owner: ms24)
+  - polygon_id: 355246
+    code: pearls
+  # added by generate-config on 2026-07-07 (Polygon name: kaito, owner: ms24)
+  - polygon_id: 399300
+    code: kaito
+  # added by generate-config on 2026-07-07 (Polygon name: nivelle, owner: ms24)
+  - polygon_id: 399063
+    code: nivelle
+  # added by generate-config on 2026-07-07 (Polygon name: abduct, owner: ms24)
+  - polygon_id: 396606
+    code: abduct
+  # added by generate-config on 2026-07-07 (Polygon name: meetings, owner: legend0fhell)
+  - polygon_id: 396430
+    code: meetings
+  # added by generate-config on 2026-07-07 (Polygon name: icefrog, owner: ms24)
+  - polygon_id: 396703
+    code: icefrog
+  # added by generate-config on 2026-07-07 (Polygon name: mprime, owner: ms24)
+  - polygon_id: 397861
+    code: mprime
+  # added by generate-config on 2026-07-07 (Polygon name: nkbracke, owner: ms24)
+  - polygon_id: 397085
+    code: nkbracke
+  # added by generate-config on 2026-07-07 (Polygon name: abstract, owner: ms24)
+  - polygon_id: 395847
+    code: abstract
+  # added by generate-config on 2026-07-07 (Polygon name: gen, owner: ms24)
+  - polygon_id: 373515
+    code: gen
+  # added by generate-config on 2026-07-07 (Polygon name: money, owner: ms24)
+  - polygon_id: 375704
+    code: money
+  # added by generate-config on 2026-07-07 (Polygon name: bank-mrdong, owner: ms24)
+  - polygon_id: 375701
+    code: bank_mrdong
+  # added by generate-config on 2026-07-07 (Polygon name: maxsq, owner: ms24)
+  - polygon_id: 375432
+    code: maxsq
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-disjoint, owner: legend0fhell)
+  - polygon_id: 363837
+    code: hhy_disjoint
+  # added by generate-config on 2026-07-07 (Polygon name: palinprime, owner: ms24)
+  - polygon_id: 374780
+    code: palinprime
+  # added by generate-config on 2026-07-07 (Polygon name: triangle, owner: ms24)
+  - polygon_id: 374793
+    code: triangle
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-reform, owner: ms24)
+  - polygon_id: 359004
+    code: hhy_reform
+  # added by generate-config on 2026-07-07 (Polygon name: max, owner: ms24)
+  - polygon_id: 374801
+    code: max
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-dictionary, owner: ms24)
+  - polygon_id: 368100
+    code: hhy_dictionary
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-roads, owner: ms24)
+  - polygon_id: 374427
+    code: hhy_roads
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-cd, owner: ms24)
+  - polygon_id: 374418
+    code: hhy_cd
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-highway, owner: ms24)
+  - polygon_id: 374392
+    code: hhy_highway
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-mintree, owner: ms24)
   - polygon_id: 374388
-    code: hhy_mintree     
+    code: hhy_mintree
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-olymnet, owner: ms24)
+  - polygon_id: 374430
+    code: hhy_olymnet
+  # added by generate-config on 2026-07-07 (Polygon name: explore, owner: ms24)
+  - polygon_id: 373902
+    code: explore
+  # added by generate-config on 2026-07-07 (Polygon name: sumq, owner: ms24)
+  - polygon_id: 373490
+    code: sumq
+  # added by generate-config on 2026-07-07 (Polygon name: glass, owner: ms24)
+  - polygon_id: 369841
+    code: glass
+  # added by generate-config on 2026-07-07 (Polygon name: leadtrail, owner: legend0fhell)
+  - polygon_id: 369546
+    code: leadtrail
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-inverse2, owner: ms24)
+  - polygon_id: 371916
+    code: hhy_inverse2
+  # added by generate-config on 2026-07-07 (Polygon name: diff, owner: ms24)
+  - polygon_id: 372674
+    code: diff
+  # added by generate-config on 2026-07-07 (Polygon name: decode, owner: ms24)
+  - polygon_id: 372670
+    code: decode
+  # added by generate-config on 2026-07-07 (Polygon name: girls, owner: legend0fhell)
+  - polygon_id: 372663
+    code: girls
+  # added by generate-config on 2026-07-07 (Polygon name: string, owner: ms24)
+  - polygon_id: 372668
+    code: string
+  # added by generate-config on 2026-07-07 (Polygon name: str4, owner: ms24)
+  - polygon_id: 372667
+    code: str4
+  # added by generate-config on 2026-07-07 (Polygon name: alphabet, owner: ms24)
+  - polygon_id: 372664
+    code: alphabet
+  # added by generate-config on 2026-07-07 (Polygon name: password, owner: ms24)
+  - polygon_id: 372666
+    code: password
+  # added by generate-config on 2026-07-07 (Polygon name: sumseq, owner: legend0fhell)
+  - polygon_id: 372659
+    code: sumseq
+  # added by generate-config on 2026-07-07 (Polygon name: sumez, owner: legend0fhell)
+  - polygon_id: 372656
+    code: sumez
+  # added by generate-config on 2026-07-07 (Polygon name: gapgiay, owner: legend0fhell)
+  - polygon_id: 372654
+    code: gapgiay
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-subseq, owner: ms24)
+  - polygon_id: 371917
+    code: hhy_subseq
+  # added by generate-config on 2026-07-07 (Polygon name: frog, owner: ms24)
+  - polygon_id: 371754
+    code: frog
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-colorpath, owner: ms24)
+  - polygon_id: 372315
+    code: hhy_colorpath
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-genetic, owner: ms24)
+  - polygon_id: 372314
+    code: hhy_genetic
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-garlan, owner: ms24)
+  - polygon_id: 372313
+    code: hhy_garlan
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-kperms, owner: ms24)
+  - polygon_id: 372308
+    code: hhy_kperms
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-queue, owner: ms24)
+  - polygon_id: 372305
+    code: hhy_queue
+  # added by generate-config on 2026-07-07 (Polygon name: bully, owner: ms24)
+  - polygon_id: 371965
+    code: bully
+  # added by generate-config on 2026-07-07 (Polygon name: eva2, owner: ms24)
+  - polygon_id: 372168
+    code: eva2
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-sbox2, owner: ms24)
+  - polygon_id: 371915
+    code: hhy_sbox2
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-sbox1, owner: ms24)
+  - polygon_id: 371913
+    code: hhy_sbox1
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-dart, owner: ms24)
+  - polygon_id: 360072
+    code: hhy_dart
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-kinv, owner: ms24)
+  - polygon_id: 371918
+    code: hhy_kinv
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-corrupted, owner: ms24)
+  - polygon_id: 371478
+    code: hhy_corrupted
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-drawrect, owner: ms24)
+  - polygon_id: 371477
+    code: hhy_drawrect
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-knight, owner: ms24)
+  - polygon_id: 371473
+    code: hhy_knight
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-os, owner: ms24)
+  - polygon_id: 371467
+    code: hhy_os
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-minconnect, owner: ms24)
+  - polygon_id: 371404
+    code: hhy_minconnect
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-otan, owner: ms24)
+  - polygon_id: 371391
+    code: hhy_otan
+  # added by generate-config on 2026-07-07 (Polygon name: reward, owner: ms24)
+  - polygon_id: 370522
+    code: reward
+  # added by generate-config on 2026-07-07 (Polygon name: divide, owner: ms24)
+  - polygon_id: 370431
+    code: divide
+  # added by generate-config on 2026-07-07 (Polygon name: tivi, owner: ms24)
+  - polygon_id: 370400
+    code: tivi
+  # added by generate-config on 2026-07-07 (Polygon name: easytask, owner: legend0fhell)
+  - polygon_id: 369481
+    code: easytask
+  # added by generate-config on 2026-07-07 (Polygon name: ranking, owner: legend0fhell)
+  - polygon_id: 369557
+    code: ranking
+  # added by generate-config on 2026-07-07 (Polygon name: vipmatrix, owner: legend0fhell)
+  - polygon_id: 369479
+    code: vipmatrix
+  # added by generate-config on 2026-07-07 (Polygon name: bnt, owner: legend0fhell)
+  - polygon_id: 369471
+    code: bnt
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-heightlim, owner: legend0fhell)
+  - polygon_id: 364732
+    code: hhy_heightlim
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-bramex, owner: ms24)
+  - polygon_id: 368087
+    code: hhy_bramex
+  # added by generate-config on 2026-07-07 (Polygon name: binhhd-knstform, owner: legend0fhell)
+  - polygon_id: 368468
+    code: binhhd_knstform
+  # added by generate-config on 2026-07-07 (Polygon name: kbridge, owner: legend0fhell)
+  - polygon_id: 368464
+    code: kbridge
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-kminpath, owner: ms24)
+  - polygon_id: 360074
+    code: hhy_kminpath
+  # added by generate-config on 2026-07-07 (Polygon name: school, owner: legend0fhell)
+  - polygon_id: 368420
+    code: school
+  # added by generate-config on 2026-07-07 (Polygon name: pathnum, owner: legend0fhell)
+  - polygon_id: 368434
+    code: pathnum
+  # added by generate-config on 2026-07-07 (Polygon name: oldcoin, owner: legend0fhell)
+  - polygon_id: 368430
+    code: oldcoin
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-comm, owner: ms24)
+  - polygon_id: 360061
+    code: hhy_comm
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-ctt, owner: ms24)
+  - polygon_id: 360066
+    code: hhy_ctt
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-minpath, owner: ms24)
+  - polygon_id: 360083
+    code: hhy_minpath
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-tour, owner: ms24)
+  - polygon_id: 360085
+    code: hhy_tour
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-cpdag, owner: ms24)
+  - polygon_id: 368344
+    code: hhy_cpdag
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-sperfect, owner: ms24)
+  - polygon_id: 368341
+    code: hhy_sperfect
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-atm, owner: ms24)
+  - polygon_id: 368336
+    code: hhy_atm
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-newroads, owner: ms24)
+  - polygon_id: 368332
+    code: hhy_newroads
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-sconnect, owner: ms24)
+  - polygon_id: 368314
+    code: hhy_sconnect
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-foundstr, owner: ms24)
+  - polygon_id: 363814
+    code: hhy_foundstr
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-compression, owner: ms24)
+  - polygon_id: 368098
+    code: hhy_compression
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-subxor, owner: ms24)
+  - polygon_id: 368095
+    code: hhy_subxor
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-depart, owner: ms24)
+  - polygon_id: 368092
+    code: hhy_depart
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-randnum, owner: ms24)
+  - polygon_id: 368090
+    code: hhy_randnum
+  # added by generate-config on 2026-07-07 (Polygon name: atm, owner: legend0fhell)
+  - polygon_id: 367739
+    code: atm
+  # added by generate-config on 2026-07-07 (Polygon name: shootgame, owner: legend0fhell)
+  - polygon_id: 367740
+    code: shootgame
+  # added by generate-config on 2026-07-07 (Polygon name: gspvh-traxanh, owner: legend0fhell)
+  - polygon_id: 367734
+    code: gspvh_traxanh
+  # added by generate-config on 2026-07-07 (Polygon name: digit, owner: legend0fhell)
+  - polygon_id: 367458
+    code: digit
+  # added by generate-config on 2026-07-07 (Polygon name: white, owner: legend0fhell)
+  - polygon_id: 367466
+    code: white
+  # added by generate-config on 2026-07-07 (Polygon name: jumptest, owner: legend0fhell)
+  - polygon_id: 367456
+    code: jumptest
+  # added by generate-config on 2026-07-07 (Polygon name: superidol, owner: legend0fhell)
+  - polygon_id: 367453
+    code: superidol
+  # added by generate-config on 2026-07-07 (Polygon name: toys, owner: legend0fhell)
+  - polygon_id: 367222
+    code: toys
+  # added by generate-config on 2026-07-07 (Polygon name: market, owner: legend0fhell)
+  - polygon_id: 367109
+    code: market
+  # added by generate-config on 2026-07-07 (Polygon name: gspvh-cntsubseq, owner: legend0fhell)
+  - polygon_id: 366904
+    code: gspvh_cntsubseq
+  # added by generate-config on 2026-07-07 (Polygon name: gspvh-lis, owner: legend0fhell)
+  - polygon_id: 366903
+    code: gspvh_lis
+  # added by generate-config on 2026-07-07 (Polygon name: gspvh-knapsack, owner: legend0fhell)
+  - polygon_id: 366649
+    code: gspvh_knapsack
+  # added by generate-config on 2026-07-07 (Polygon name: treasure, owner: legend0fhell)
+  - polygon_id: 364706
+    code: treasure
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-escape, owner: legend0fhell)
+  - polygon_id: 364676
+    code: hhy_escape
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-findway, owner: legend0fhell)
+  - polygon_id: 363835
+    code: hhy_findway
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-issue, owner: legend0fhell)
+  - polygon_id: 364737
+    code: hhy_issue
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-acircuit, owner: legend0fhell)
+  - polygon_id: 364708
+    code: hhy_acircuit
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-kenchong, owner: legend0fhell)
+  - polygon_id: 364700
+    code: hhy_kenchong
+  # added by generate-config on 2026-07-07 (Polygon name: conscell, owner: legend0fhell)
+  - polygon_id: 364681
+    code: conscell
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-eva, owner: legend0fhell)
+  - polygon_id: 364679
+    code: hhy_eva
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-tplt, owner: legend0fhell)
+  - polygon_id: 364621
+    code: hhy_tplt
+  # added by generate-config on 2026-07-07 (Polygon name: psynum, owner: legend0fhell)
+  - polygon_id: 364291
+    code: psynum
+  # added by generate-config on 2026-07-07 (Polygon name: editor, owner: legend0fhell)
+  - polygon_id: 364300
+    code: editor
+  # added by generate-config on 2026-07-07 (Polygon name: kchoose, owner: legend0fhell)
+  - polygon_id: 364299
+    code: kchoose
+  # added by generate-config on 2026-07-07 (Polygon name: tristeel, owner: legend0fhell)
+  - polygon_id: 364297
+    code: tristeel
+  # added by generate-config on 2026-07-07 (Polygon name: binhhd-taixiu, owner: legend0fhell)
+  - polygon_id: 362570
+    code: binhhd_taixiu
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-sumgame, owner: legend0fhell)
+  - polygon_id: 362558
+    code: hhy_sumgame
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-twoptrroad, owner: legend0fhell)
+  - polygon_id: 362556
+    code: hhy_twoptrroad
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-triplelow, owner: legend0fhell)
+  - polygon_id: 362550
+    code: hhy_triplelow
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-sumpair, owner: legend0fhell)
+  - polygon_id: 362548
+    code: hhy_sumpair
+  # added by generate-config on 2026-07-07 (Polygon name: lineup, owner: legend0fhell)
+  - polygon_id: 362542
+    code: lineup
+  # added by generate-config on 2026-07-07 (Polygon name: dance, owner: legend0fhell)
+  - polygon_id: 362531
+    code: dance
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-journey, owner: ms24)
+  - polygon_id: 359403
+    code: hhy_journey
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-leds, owner: ms24)
+  - polygon_id: 359405
+    code: hhy_leds
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-mink, owner: ms24)
+  - polygon_id: 340399
+    code: hhy_mink
+  # added by generate-config on 2026-07-07 (Polygon name: maxrect, owner: legend0fhell)
+  - polygon_id: 361046
+    code: maxrect
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-cost, owner: legend0fhell)
+  - polygon_id: 361053
+    code: hhy_cost
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-strconcat, owner: ms24)
+  - polygon_id: 354850
+    code: hhy_strconcat
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-sumlr, owner: ms24)
+  - polygon_id: 359401
+    code: hhy_sumlr
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-crowded, owner: ms24)
+  - polygon_id: 359392
+    code: hhy_crowded
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-nearest, owner: ms24)
+  - polygon_id: 359385
+    code: hhy_nearest
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-jam, owner: ms24)
+  - polygon_id: 359013
+    code: hhy_jam
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-cnode, owner: ms24)
+  - polygon_id: 358997
+    code: hhy_cnode
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-blo, owner: ms24)
+  - polygon_id: 359008
+    code: hhy_blo
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-capital, owner: ms24)
+  - polygon_id: 359006
+    code: hhy_capital
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-net, owner: ms24)
+  - polygon_id: 359003
+    code: hhy_net
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-cbridge, owner: ms24)
+  - polygon_id: 358990
+    code: hhy_cbridge
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-beginend, owner: ms24)
+  - polygon_id: 354835
+    code: hhy_beginend
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-friend, owner: ms24)
+  - polygon_id: 354852
+    code: hhy_friend
+  # added by generate-config on 2026-07-07 (Polygon name: traffic, owner: ms24)
+  - polygon_id: 357725
+    code: traffic
+  # added by generate-config on 2026-07-07 (Polygon name: binhhd-cwater, owner: legend0fhell)
+  - polygon_id: 357285
+    code: binhhd_cwater
+  # added by generate-config on 2026-07-07 (Polygon name: binhhd-tires, owner: legend0fhell)
+  - polygon_id: 357297
+    code: binhhd_tires
+  # added by generate-config on 2026-07-07 (Polygon name: binhhd-diophante, owner: legend0fhell)
+  - polygon_id: 357293
+    code: binhhd_diophante
+  # added by generate-config on 2026-07-07 (Polygon name: binhhd-gcm, owner: legend0fhell)
+  - polygon_id: 357265
+    code: binhhd_gcm
+  # added by generate-config on 2026-07-07 (Polygon name: rangegcd, owner: legend0fhell)
+  - polygon_id: 357102
+    code: rangegcd
+  # added by generate-config on 2026-07-07 (Polygon name: cpath2, owner: ms24)
+  - polygon_id: 355451
+    code: cpath2
+  # added by generate-config on 2026-07-07 (Polygon name: marathon, owner: ms24)
+  - polygon_id: 355227
+    code: marathon
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-adn, owner: ms24)
+  - polygon_id: 354844
+    code: hhy_adn
+  # added by generate-config on 2026-07-07 (Polygon name: sumk, owner: legend0fhell)
+  - polygon_id: 354714
+    code: sumk
+  # added by generate-config on 2026-07-07 (Polygon name: divbook, owner: legend0fhell)
+  - polygon_id: 354706
+    code: divbook
+  # added by generate-config on 2026-07-07 (Polygon name: countpath, owner: legend0fhell)
+  - polygon_id: 354705
+    code: countpath
+  # added by generate-config on 2026-07-07 (Polygon name: cprod, owner: legend0fhell)
+  - polygon_id: 354704
+    code: cprod
+  # added by generate-config on 2026-07-07 (Polygon name: permgcd, owner: legend0fhell)
+  - polygon_id: 354699
+    code: permgcd
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-ants, owner: ms24)
+  - polygon_id: 351913
+    code: hhy_ants
+  # added by generate-config on 2026-07-07 (Polygon name: cpath, owner: ms24)
+  - polygon_id: 352119
+    code: cpath
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-lca, owner: ms24)
+  - polygon_id: 351907
+    code: hhy_lca
+  # added by generate-config on 2026-07-07 (Polygon name: history, owner: ms24)
+  - polygon_id: 350474
+    code: history
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-sumkmax, owner: legend0fhell)
+  - polygon_id: 350518
+    code: hhy_sumkmax
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-lowb, owner: legend0fhell)
+  - polygon_id: 350517
+    code: hhy_lowb
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-bicycle, owner: legend0fhell)
+  - polygon_id: 350516
+    code: hhy_bicycle
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-circlebs, owner: legend0fhell)
+  - polygon_id: 350513
+    code: hhy_circlebs
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-wall, owner: legend0fhell)
+  - polygon_id: 350510
+    code: hhy_wall
+  # added by generate-config on 2026-07-07 (Polygon name: ntu-chenhlech, owner: legend0fhell)
+  - polygon_id: 347393
+    code: ntu_chenhlech
+  # added by generate-config on 2026-07-07 (Polygon name: mdict, owner: ms24)
+  - polygon_id: 349506
+    code: mdict
+  # added by generate-config on 2026-07-07 (Polygon name: kmnum, owner: ms24)
+  - polygon_id: 349515
+    code: kmnum
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-tumota, owner: legend0fhell)
+  - polygon_id: 349781
+    code: hhy_tumota
+  # added by generate-config on 2026-07-07 (Polygon name: hhy-advert, owner: legend0fhell)
+  - polygon_id: 349723
+    code: hhy_advert
+  # added by generate-config on 2026-07-07 (Polygon name: spaceship, owner: legend0fhell)
+  - polygon_id: 347247
+    code: spaceship
+  # added by generate-config on 2026-07-07 (Polygon name: invthree, owner: legend0fhell)
+  - polygon_id: 347250
+    code: invthree
+  # added by generate-config on 2026-07-07 (Polygon name: frpair, owner: legend0fhell)
+  - polygon_id: 347242
+    code: frpair
+  # added by generate-config on 2026-07-07 (Polygon name: sqsum, owner: legend0fhell)
+  - polygon_id: 347235
+    code: sqsum
+  # added by generate-config on 2026-07-07 (Polygon name: modscore, owner: legend0fhell)
+  - polygon_id: 347245
+    code: modscore
+  # added by generate-config on 2026-07-07 (Polygon name: near, owner: ms24)
+  - polygon_id: 336205
+    code: near
+  # added by generate-config on 2026-07-07 (Polygon name: cows, owner: ms24)
+  - polygon_id: 345207
+    code: cows
+  # added by generate-config on 2026-07-07 (Polygon name: rectangle, owner: ms24)
+  - polygon_id: 340855
+    code: rectangle
+  # added by generate-config on 2026-07-07 (Polygon name: ancestor, owner: ms24)
+  - polygon_id: 346194
+    code: ancestor
+  # added by generate-config on 2026-07-07 (Polygon name: sorry, owner: legend0fhell)
+  - polygon_id: 149798
+    code: sorry
+  # added by generate-config on 2026-07-07 (Polygon name: cow, owner: ms24)
+  - polygon_id: 345105
+    code: cow
+  # added by generate-config on 2026-07-07 (Polygon name: gcamp, owner: ms24)
+  - polygon_id: 329097
+    code: gcamp
+  # added by generate-config on 2026-07-07 (Polygon name: invarr, owner: ms24)
+  - polygon_id: 329071
+    code: invarr
+  # added by generate-config on 2026-07-07 (Polygon name: qsum, owner: ms24)
+  - polygon_id: 328758
+    code: qsum
+  # added by generate-config on 2026-07-07 (Polygon name: sweepline-seminar, owner: linhdieu)
+  - polygon_id: 310066
+    code: sweepline_seminar
+  # added by generate-config on 2026-07-07 (Polygon name: sweepline-isolation, owner: linhdieu)
+  - polygon_id: 310063
+    code: sweepline_isolation
+  # added by generate-config on 2026-07-07 (Polygon name: a-plus-b-graders, owner: geranazavr555)
+  - polygon_id: 208585
+    code: a_plus_b_graders
+  # added by generate-config on 2026-07-07 (Polygon name: example-almost-upper-bound, owner: mmirzayanov)
+  - polygon_id: 69943
+    code: example_almost_upper_bound

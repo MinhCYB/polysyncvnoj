@@ -163,6 +163,57 @@ def build_description_markdown(statement):
     return '\n\n'.join(parts)
 
 
+def build_sample_section(problem_dir, sample_indices):
+    """Build a Markdown section with Sample Input/Output from test files.
+
+    Reads {i}.in and {i}.out from problem_dir (already normalised by
+    convert_package) for each index in sample_indices and formats them
+    per the VNOJ/Martor convention confirmed on the live site:
+
+    Single sample:
+        ## Sample Input
+
+            <content, indented 4 spaces>
+
+        ## Sample Output
+
+            <content, indented 4 spaces>
+
+    Multiple samples (numbered starting at 1):
+        ## Sample Input 1
+        ...
+        ## Sample Input 2
+        ...
+
+    Returns an empty string when sample_indices is empty.
+    """
+    if not sample_indices:
+        return ''
+
+    def _indent(text):
+        """Indent every line of text by 4 spaces (Martor preformatted block)."""
+        lines = text.rstrip('\n').split('\n')
+        return '\n'.join('    ' + line for line in lines)
+
+    numbered = len(sample_indices) > 1
+    parts = []
+    for seq, test_idx in enumerate(sample_indices, start=1):
+        suffix = f' {seq}' if numbered else ''
+        in_path  = os.path.join(problem_dir, f'{test_idx}.in')
+        out_path = os.path.join(problem_dir, f'{test_idx}.out')
+        with open(in_path, encoding='utf-8', errors='replace') as f:
+            in_content = f.read()
+        with open(out_path, encoding='utf-8', errors='replace') as f:
+            out_content = f.read()
+        parts.append(
+            f'## Sample Input{suffix}\n\n{_indent(in_content)}'
+        )
+        parts.append(
+            f'## Sample Output{suffix}\n\n{_indent(out_content)}'
+        )
+    return '\n\n'.join(parts)
+
+
 # ---------------------------------------------------------------------------
 # problem.xml parsing
 # ---------------------------------------------------------------------------
@@ -217,11 +268,17 @@ def parse_problem_xml(pkg_dir, allow_zero_points=False):
 
     tests_node = testset.find('tests')
     points_list = []
+    sample_indices = []  # 1-based indices of tests marked sample="true"
     if tests_node is not None:
-        for t in tests_node.findall('test'):
+        for idx, t in enumerate(tests_node.findall('test'), start=1):
             points_list.append(float(t.get('points', 0)))
+            if t.get('sample', '').lower() == 'true':
+                sample_indices.append(idx)
     if len(points_list) != info['test_count']:
         points_list = [0.0] * info['test_count']
+        sample_indices = []
+
+    info['sample_indices'] = sample_indices
 
     # Invariant 2: fail loudly if all points are zero, unless explicitly opted-in.
     if sum(points_list) == 0:

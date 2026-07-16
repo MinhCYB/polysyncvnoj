@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from polysync.convert import (
     MAIN_SOLUTION_TAGS,
+    build_sample_section,
     latex_to_markdown,
     parse_problem_xml,
     write_init_yml,
@@ -365,6 +366,141 @@ class TestWriteInitYml(unittest.TestCase):
         """)
         self.assertIn(expected_tc_block, content,
                       f"test_cases block not found in:\n{content}")
+
+
+# ---------------------------------------------------------------------------
+# sample_indices: parse_problem_xml reads sample="true" attributes
+# ---------------------------------------------------------------------------
+
+FIXTURE_WITH_SAMPLES = Path(__file__).parent / 'fixtures' / 'sample_with_samples'
+
+
+class TestParseSampleIndices(unittest.TestCase):
+    def test_sample_indices_detected(self):
+        """parse_problem_xml must populate sample_indices with 1-based test numbers."""
+        info = parse_problem_xml(str(FIXTURE_WITH_SAMPLES))
+        # The fixture has tests 1 and 2 marked sample="true"
+        self.assertEqual(info['sample_indices'], [1, 2])
+
+    def test_sample_indices_not_include_non_sample(self):
+        """Test 3 (generated, no sample attribute) must NOT be in sample_indices."""
+        info = parse_problem_xml(str(FIXTURE_WITH_SAMPLES))
+        self.assertNotIn(3, info['sample_indices'])
+
+    def test_no_sample_attribute_gives_empty_list(self):
+        """When no test has sample=\"true\", sample_indices must be []."""
+        pkg_dir = _make_xml(points=[30, 30, 40])  # no sample attributes
+        info = parse_problem_xml(pkg_dir)
+        self.assertEqual(info['sample_indices'], [])
+
+    def test_sample_indices_key_always_present(self):
+        """sample_indices key must always exist in the returned dict."""
+        pkg_dir = _make_xml(points=[50, 50])
+        info = parse_problem_xml(pkg_dir)
+        self.assertIn('sample_indices', info)
+
+
+# ---------------------------------------------------------------------------
+# build_sample_section
+# ---------------------------------------------------------------------------
+
+class TestBuildSampleSection(unittest.TestCase):
+    """Tests for build_sample_section using temporary .in/.out files."""
+
+    def _write_files(self, tmpdir, files):
+        """Helper: write {name: content} pairs under tmpdir."""
+        for name, content in files.items():
+            with open(os.path.join(tmpdir, name), 'w', encoding='utf-8') as f:
+                f.write(content)
+
+    def test_empty_indices_returns_empty_string(self):
+        """sample_indices=[] → empty string, no exception."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmpdir:
+            result = build_sample_section(tmpdir, [])
+        self.assertEqual(result, '')
+
+    def test_single_sample_no_number_suffix(self):
+        """Single sample: headings are 'Sample Input' / 'Sample Output' (no number)."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmpdir:
+            self._write_files(tmpdir, {'1.in': '3 5\n', '1.out': '8\n'})
+            result = build_sample_section(tmpdir, [1])
+        self.assertIn('## Sample Input\n', result)
+        self.assertIn('## Sample Output\n', result)
+        # Must NOT have a number suffix
+        self.assertNotIn('Sample Input 1', result)
+        self.assertNotIn('Sample Output 1', result)
+
+    def test_single_sample_content_indented_4_spaces(self):
+        """Each line of .in/.out content must be indented by exactly 4 spaces."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmpdir:
+            self._write_files(tmpdir, {'1.in': '3 5\n', '1.out': '8\n'})
+            result = build_sample_section(tmpdir, [1])
+        # The content lines must be prefixed with 4 spaces
+        self.assertIn('    3 5', result)
+        self.assertIn('    8', result)
+
+    def test_two_samples_numbered(self):
+        """Two samples: headings must be numbered 'Sample Input 1', 'Sample Input 2', etc."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmpdir:
+            self._write_files(tmpdir, {
+                '1.in': '1 2\n', '1.out': '3\n',
+                '2.in': '4 5\n', '2.out': '9\n',
+            })
+            result = build_sample_section(tmpdir, [1, 2])
+        self.assertIn('## Sample Input 1\n', result)
+        self.assertIn('## Sample Output 1\n', result)
+        self.assertIn('## Sample Input 2\n', result)
+        self.assertIn('## Sample Output 2\n', result)
+
+    def test_two_samples_content_correct_and_indented(self):
+        """Each sample's content must appear under the correct heading, indented."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmpdir:
+            self._write_files(tmpdir, {
+                '1.in': '1 2\n', '1.out': '3\n',
+                '2.in': '4 5\n', '2.out': '9\n',
+            })
+            result = build_sample_section(tmpdir, [1, 2])
+        # All four content lines must be indented
+        self.assertIn('    1 2', result)
+        self.assertIn('    3', result)
+        self.assertIn('    4 5', result)
+        self.assertIn('    9', result)
+
+    def test_two_samples_ordering(self):
+        """Section 1 must appear before section 2 in the output."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmpdir:
+            self._write_files(tmpdir, {
+                '1.in': 'AAA\n', '1.out': 'BBB\n',
+                '2.in': 'CCC\n', '2.out': 'DDD\n',
+            })
+            result = build_sample_section(tmpdir, [1, 2])
+        idx1 = result.index('Sample Input 1')
+        idx2 = result.index('Sample Input 2')
+        self.assertLess(idx1, idx2)
+
+    def test_non_consecutive_sample_indices(self):
+        """sample_indices may be non-consecutive (e.g. tests 1 and 3 are samples).
+        The sequential label should still be 1 and 2 (based on position in list),
+        while the file read uses the actual index."""
+        import tempfile
+        with tempfile.TemporaryDirectory() as tmpdir:
+            self._write_files(tmpdir, {
+                '1.in': 'X\n', '1.out': 'Y\n',
+                '3.in': 'P\n', '3.out': 'Q\n',
+            })
+            result = build_sample_section(tmpdir, [1, 3])
+        # Both sections must be numbered
+        self.assertIn('## Sample Input 1\n', result)
+        self.assertIn('## Sample Input 2\n', result)
+        # Content must come from the correct files
+        self.assertIn('    X', result)
+        self.assertIn('    P', result)
 
 
 if __name__ == '__main__':

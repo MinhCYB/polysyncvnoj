@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<problem>
+  <names>
+    <name language="english" value="Sample With Samples"/>
+  </names>
+
+  <judging input-file="" output-file="">
+    <testset name="tests">
+      <time-limit>2000</time-limit>
+      <memory-limit>262144</memory-limit>
+      <test-count>3</test-count>
+      <tests>
+        <!-- tests 1 and 2 are sample tests -->
+        <test method="manual" points="4.0" sample="true"/>
+        <test method="manual" points="4.0" sample="true"/>
+        <!-- test 3 is a generated test, NOT a sample -->
+        <test cmd="gen 1" method="generated" points="4.0"/>
+      </tests>
+    </testset>
+  </judging>
+
+  <assets>
+    <checker name="checker">
+      <source path="check.cpp" type="cpp.g++17"/>
+    </checker>
+    <solutions>
+      <solution tag="MA">
+        <source path="solutions/std.cpp" type="cpp.g++17"/>
+      </solution>
+    </solutions>
+  </assets>
+</problem>

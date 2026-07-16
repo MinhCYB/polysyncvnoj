@@ -119,7 +119,7 @@ def _sync_one(problem: dict, api_key: str, api_secret: str,
     Raises on any failure so the caller can catch and report.
     """
     from polysync.polygon_api import download_polygon_package, fetch_statement
-    from polysync.convert import build_description_markdown, convert_package
+    from polysync.convert import build_description_markdown, build_sample_section, convert_package
     from polysync.vnoj import push_to_vnoj
 
     code = problem['code']
@@ -143,6 +143,12 @@ def _sync_one(problem: dict, api_key: str, api_secret: str,
             allow_zero_points=allow_zero_points,
             wineprefix=wineprefix,
         )
+
+        # Append Sample Input/Output section built from the actual test files
+        # (convert_package has already written normalised .in/.out to problem_dir).
+        sample_section = build_sample_section(problem_dir, info.get('sample_indices', []))
+        if sample_section:
+            description = description + '\n\n' + sample_section
 
         payload = {
             'code':         code,
